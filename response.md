@@ -3,6 +3,7 @@
 ## NOTE:
 
     video presentation link: https://youtu.be/dtzrSNb-x1g
+    another backup link: https://drive.google.com/file/d/10ggfwJyGDXZya22EBxAA8kCnJXO0zJw8/view?usp=sharing
     In order to run the code, you will need the wiki.en.bin file. You can download it from the follwing website: https://fasttext.cc/docs/en/crawl-vectors.html
     It's very large, so I wasn't able to get it on git, even after zipping it :(
 
