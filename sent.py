@@ -4,6 +4,7 @@ from tensorflow import keras
 import pandas as pd
 import gensim
 import re
+import csv
 
 #I don't want to worry about 3 classes for classification
 def pruneData(data, label):
@@ -79,6 +80,13 @@ def assignLabels(label):
             return None
     return labels
 
+def setUpMetricLog():
+
+    with open('dataLog.csv', mode='w') as csv_file:
+        writer = csv.writer(csv_file)
+
+        writer.writerow(['Batch Num', 'Accuracy', 'Percision', 'Recall', 'F1',"AUCROC"])
+
 print("loading data")
 trainCSV = pd.read_csv("data/twitter_training.csv")
 testCSV = pd.read_csv("data/twitter_validation.csv")
@@ -148,5 +156,5 @@ print("network created")
 epoch = 5
 numWorkers = 2
 
-hist = model.fit(x_train, y_train, epochs=epoch, batch_size = 200, validation_data = (x_test,y_test), verbose = 1, max_queue_size=1)
+hist = model.fit(x_train, y_train, epochs=epoch, batch_size = 150, validation_data = (x_test,y_test), verbose = 1, max_queue_size=1)
 # model.save_weights(filepath=f'../model_weights/{model_name}/weights.h5', save_format='h5')
