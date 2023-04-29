@@ -1,5 +1,11 @@
 # About the project:
 
+## NOTE:
+
+    video presentation link: https://youtu.be/dtzrSNb-x1g
+    In order to run the code, you will need the wiki.en.bin file. You can download it from the follwing website: https://fasttext.cc/docs/en/crawl-vectors.html
+    It's very large, so I wasn't able to get it on git, even after zipping it :(
+
 ## Problem being studied:
 
     With social media being as influential is it is on our modern day and age, being able to gather and analyze data from social media can be very powerful in a number of applications, such as predicting market trends or analyzing public perception of a product. However this comes with a challange, as social media communication is different from normal written text, as certain platforms such as twitter feature word limits that encourage cramming information, as well as unusual pieces of text such as hashes, links, emojis, and usernames. However, with a powerful enough model, such as an LSTM RNN, I hypothesisize that with some slight sanitation, it can still acurately predict the sentiment of social media posts.
