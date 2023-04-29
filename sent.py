@@ -168,7 +168,7 @@ model.add(keras.layers.Masking(mask_value=0., input_shape=(maxx, 300), dtype=np.
 model.add(keras.layers.LSTM(units=maxx, activation='tanh', return_sequences=False, dtype=np.float32))
 model.add(keras.layers.Dense(units=32, activation='relu', dtype=np.float32))
 model.add(keras.layers.Dense(units = 1, activation='sigmoid', dtype=np.float32))
-model.compile(optimizer=keras.optimizers.Adam(learning_rate=0.001), loss=keras.losses.BinaryCrossentropy(), metrics=metric, callbacks = [callbackLog])
+model.compile(optimizer=keras.optimizers.Adam(learning_rate=0.001), loss=keras.losses.BinaryCrossentropy(), metrics=metric)
 model.summary()
 
 print("network created")
@@ -176,5 +176,5 @@ print("network created")
 epoch = 5
 numWorkers = 2
 
-hist = model.fit(x_train, y_train, epochs=epoch, batch_size = 150, validation_data = (x_test,y_test), verbose = 1, max_queue_size=1, callback = )
+hist = model.fit(x_train, y_train, epochs=epoch, batch_size = 150, validation_data = (x_test,y_test), verbose = 1, max_queue_size=1, callbacks = [callbackLog])
 # model.save_weights(filepath=f'../model_weights/{model_name}/weights.h5', save_format='h5')
