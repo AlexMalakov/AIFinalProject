@@ -82,15 +82,21 @@ def assignLabels(label):
 
 def setUpMetricLog():
 
-    with open('batchLog.csv', mode='w') as csv_file:
+    with open('data/batchLog.csv', mode='w') as csv_file:
         writer = csv.writer(csv_file)
 
         writer.writerow(['Batch Num', 'BinAcc', 'Percision', 'Recall',"AUCROC"])
 
+    with open('data/epochLog.csv', mode='w') as csv_file:
+        writer = csv.writer(csv_file)
+
+        writer.writerow(['Epoch Num', 'BinAcc', 'Percision', 'Recall',"AUCROC"])
+
 class LoggerCallback(keras.callbacks.Callback):
-    def __init__(self, batchLog):
+    def __init__(self, batchLog, epochLog):
         super(LoggerCallback, self).__init__()
         self.batchLog = batchLog
+        self.epochLog = epochLog
         self.batchNum = 0
 
     def on_batch_end(self, batch, logs = None):
@@ -101,6 +107,16 @@ class LoggerCallback(keras.callbacks.Callback):
         binAcc = logs["binary_accuracy"]
 
         with open(self.batchLog, 'a', newline ='') as f:
+            csvWrite = csv.writer(f)
+            csvWrite.writerow([self.batchNum,binAcc,prec,recall, auc])
+
+    def on_epoch_end(self, epoch, logs = None):
+        auc = logs["val_auc"]
+        recall = logs["val_recall"]
+        prec = logs["val_precision"]
+        binAcc = logs["val_binary_accuracy"]
+
+        with open(self.epochLog, 'a', newline ='') as f:
             csvWrite = csv.writer(f)
             csvWrite.writerow([self.batchNum,binAcc,prec,recall, auc])
 
@@ -160,7 +176,7 @@ y_test = tf.convert_to_tensor(y_test)
 
 
 print('data is ready for NN')
-callbackLog = LoggerCallback("batchLog.csv")
+callbackLog = LoggerCallback("data/batchLog.csv", "data/epochLog.csv")
 metric = [keras.metrics.BinaryAccuracy(), keras.metrics.Precision(), keras.metrics.Recall(), keras.metrics.AUC()]
 
 model = keras.models.Sequential()
