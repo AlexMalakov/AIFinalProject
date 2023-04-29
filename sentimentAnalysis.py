@@ -184,7 +184,7 @@ x_test = tf.convert_to_tensor(x_test)
 y_train = tf.convert_to_tensor(y_train)
 y_test = tf.convert_to_tensor(y_test)
 
-
+setUpMetricLog()
 print('data is ready for Network')
 callbackLog = LoggerCallback("data/batchLog.csv", "data/epochLog.csv")
 metric = [keras.metrics.BinaryAccuracy(), keras.metrics.Precision(), keras.metrics.Recall(), keras.metrics.AUC()]
