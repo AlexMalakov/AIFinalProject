@@ -173,7 +173,7 @@ model.summary()
 
 print("network created")
 
-epoch = 5
+epoch = 10
 numWorkers = 2
 
 hist = model.fit(x_train, y_train, epochs=epoch, batch_size = 150, validation_data = (x_test,y_test), verbose = 1, max_queue_size=1, callbacks = [callbackLog])

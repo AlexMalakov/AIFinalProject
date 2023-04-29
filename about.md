@@ -12,11 +12,15 @@
 
     When training my network, I used _________________-
 
-## Data Source:
+## Source:
 
     - For my dataset, I used a public domain dataset of posts with a sentiment that I found on Kaggle. The dataset was created by user "passionate-nlp", and is linked below.
 
     - Dataset: https://www.kaggle.com/datasets/jp797498e/twitter-entity-sentiment-analysis
+
+    - While most of my code was written by me, I used starter code and examples from Tensorflow's website to help me figure out how to get started. 
+
+    - https://www.tensorflow.org/guide/keras
 
 ## Contributions:
 
